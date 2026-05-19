@@ -33,17 +33,39 @@ public class SimpleJson {
 
 
     public static List<NotificationDTO> parseNotifications(String json) {
-        if (json == null || json.isBlank()) {
-            return List.of();
+        if (json == null || json.isBlank()) return List.of();
+        List<NotificationDTO> out = new ArrayList<>();
+        Pattern obj = Pattern.compile("\\{([^}]*)\\}");
+        Matcher m = obj.matcher(json);
+        while (m.find()) {
+            String body = m.group(1);
+            NotificationDTO n = new NotificationDTO();
+            n.id = uuid(get(body, "id"));
+            n.type = unescape(get(body, "type"));
+            String createdAt = get(body, "createdAt");
+            n.createdAt = createdAt != null && !createdAt.isBlank() ? OffsetDateTime.parse(createdAt) : null;
+            n.caseId = uuid(get(body, "caseId"));
+            n.message = unescape(get(body, "message"));
+            out.add(n);
         }
+        return out;
+    }
         
-        List<NotificationDTO> parsed = parseArray(json);
-        return parsed; 
+    private static UUID uuid(String s) {
+        if (s == null || s.isBlank()) return null;
+        try { return UUID.fromString(s); } catch (Exception e) { return null; }
     }
 
-    private static List<NotificationDTO> parseArray(String json) {
-        // TODO: разбор JSON-массива уведомлений
-        return null;
+    private static String get(String body, String key) {
+        Pattern p = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*\"((?:\\\\.|[^\"])+)\"");
+        Matcher m = p.matcher(body);
+        if (!m.find()) return null;
+        return m.group(1);
+    }
+
+    private static String unescape(String s) {
+        if (s == null) return null;
+        return s.replace("\\\"", "\"").replace("\\\\", "\\");
     }
 
     private static String escape(String s) {
