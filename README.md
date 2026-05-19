@@ -14,14 +14,12 @@
 
 - JDK 17+
 - Maven 3.8+
-- Доступ к PostgreSQL (параметры в `src/main/resources/config.properties`)
 
 ## Установка и запуск
 
 ```bash
 git clone <URL-репозитория>
 cd LawyerCompanySystem
-# Настройте config.properties (db.url и учётные данные)
 mvn javafx:run
 ```
 
@@ -40,6 +38,7 @@ mvn test
 
 ## Структура проекта
 
+(Некоторые каталоги не загружены в репозиторий, это примерная мини-структура проекта. После будут добавлены все каталоги, с классами и интерфейсами).
 - `src/main/java/com/lawyercompany` - главный модуль (MainApp, controller, service, dao, entity)
 - `src/main/resources/view` - FXML-макеты
 - `src/main/resources/css` - стили
