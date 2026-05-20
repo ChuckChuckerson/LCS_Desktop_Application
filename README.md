@@ -38,11 +38,32 @@ mvn test
 
 ## Структура проекта
 
-(Некоторые каталоги не загружены в репозиторий, это примерная мини-структура проекта. После будут добавлены все каталоги, с классами и интерфейсами).
-- `src/main/java/com/lawyercompany` - главный модуль (MainApp, controller, service, dao, entity)
-- `src/main/resources/view` - FXML-макеты
-- `src/main/resources/css` - стили
-- `src/test/java` - модульные тесты
+(В репозитории ещё нет некоторых папок с файлами, позже будут добавлены)
+LawyerCompanySystem/
+├── pom.xml
+├── README.md
+└── src/
+    ├── main/
+    │   ├── java/
+    │   │   ├── module-info.java
+    │   │   └── com/lawyercompany/
+    │   │       ├── MainApp.java              # точка входа, навигация между сценами
+    │   │       ├── controller/               # JavaFX-контроллеры
+    │   │       ├── service/                  # бизнес-логика
+    │   │       ├── dao/                      # интерфейсы доступа к данным
+    │   │       │   └── impl/                 # реализации DAO (JDBC + HikariCP)
+    │   │       ├── entity/                   # POJO-сущности (User, Case, Document, Meeting и др.)
+    │   │       ├── factory/                  # фабрика DAOFactory
+    │   │       └── up/                       # утилиты, API учебной практики
+    │   └── resources/
+    │       ├── view/                         # FXML-макеты
+    │       ├── css/
+    │       │   └── styles.css                # единый стиль приложения
+    │       ├── config.properties             # параметры подключения к БД
+    │       └── icons/                        # иконки приложения
+    └── test/
+        └── java/
+            └── com/lawyercompany/            # модульные тесты (JUnit 5)
 
 ## Автор
 
