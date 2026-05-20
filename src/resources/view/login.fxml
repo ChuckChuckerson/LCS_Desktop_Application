@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" hgap="10" vgap="10" styleClass="auth-container"
+          xmlns="http://javafx.com/javafx/17"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.lawyercompany.controller.LoginController">
+
+    <Label text="Lawyer Company System" styleClass="heading-1"
+           GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+    <Label text="Вход в систему" styleClass="heading-2"
+           GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
+
+    <Label text="Логин:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="usernameField" promptText="Введите логин"
+               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label text="Пароль:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <PasswordField fx:id="passwordField" promptText="Введите пароль"
+                   GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <Button text="Регистрация" onAction="#handleRegister"
+            GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <Button text="Войти" onAction="#handleLogin" styleClass="primary-button"
+            GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label fx:id="successLabel" styleClass="success-label" wrapText="true" maxWidth="360"
+           GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2"/>
+</GridPane>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" hgap="10" vgap="10" styleClass="form-container"
+          xmlns="http://javafx.com/javafx/17"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.lawyercompany.controller.RegisterController">
+
+    <Label text="Lawyer Company System" styleClass="heading-1"
+           GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+    <Label text="Регистрация клиента" styleClass="heading-2"
+           GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
+    <Label text="Поля со * обязательны" styleClass="muted-label"
+           GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+
+    <Label text="Логин*:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="usernameField" promptText="Придумайте логин"
+               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <Label text="Пароль*:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <PasswordField fx:id="passwordField" promptText="Минимум 6 символов"
+                   GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label text="Повторите пароль*:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <PasswordField fx:id="confirmPasswordField" promptText="Повторите пароль"
+                   GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+    <Label text="ФИО*:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+    <TextField fx:id="fullNameField" promptText="Иванов Иван Иванович"
+               GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+    <Label text="Email*:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+    <TextField fx:id="emailField" promptText="name@example.com"
+               GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+    <Label text="Телефон:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+    <TextField fx:id="phoneField" promptText="+7..."
+               GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+    <Label text="Адрес:" styleClass="label-strong" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+    <TextField fx:id="addressField" promptText="Город, улица, дом"
+               GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+
+    <Button text="Уже есть аккаунт? Войти" onAction="#handleGoToLogin"
+            GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+    <Button text="Зарегистрироваться" onAction="#handleRegister" styleClass="primary-button"
+            GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+
+    <Label fx:id="successLabel" styleClass="success-label" wrapText="true" maxWidth="420"
+           GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2"/>
+</GridPane>

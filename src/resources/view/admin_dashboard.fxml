@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.lawyercompany.controller.AdminDashboardController">
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="app-header">
+        <Label text="Административная панель" styleClass="app-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Выйти" onAction="#handleLogout" styleClass="secondary-button"/>
+    </HBox>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Пользователи">
+            <VBox spacing="10">
+                <HBox spacing="10">
+                    <Button text="Создать адвоката" onAction="#handleCreateLawyer" styleClass="primary-button"/>
+                    <Button text="Обновить" onAction="#handleRefreshUsers" styleClass="secondary-button"/>
+                </HBox>
+                <TextField fx:id="userSearchField" promptText="Поиск: логин, ФИО, email…"/>
+                <TableView fx:id="usersTable" prefHeight="400">
+                    <columns>
+                        <TableColumn fx:id="usernameColumn" text="Логин"/>
+                        <TableColumn fx:id="fullNameColumn" text="ФИО"/>
+                        <TableColumn fx:id="emailColumn" text="Email"/>
+                        <TableColumn fx:id="roleColumn" text="Роль"/>
+                        <TableColumn fx:id="blockedColumn" text="Заблокирован"/>
+                        <TableColumn fx:id="actionsColumn" text=""/>
+                        <TableColumn fx:id="editColumn" text=""/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="Аудит">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Обновить" onAction="#handleRefreshAudit" styleClass="secondary-button"/>
+                    <Button text="Экспорт CSV" onAction="#handleExportAuditCsv" styleClass="secondary-button"/>
+                    <TextField fx:id="auditSearchField" promptText="Поиск по аудиту…"
+                               HBox.hgrow="ALWAYS"/>
+                    <ComboBox fx:id="auditEntityFilterCombo" promptText="Сущность" prefWidth="160"/>
+                    <ComboBox fx:id="auditOperationFilterCombo" promptText="Операция" prefWidth="160"/>
+                </HBox>
+                <TableView fx:id="auditTable" prefHeight="400">
+                    <columns>
+                        <TableColumn fx:id="auditTimeColumn" text="Время"/>
+                        <TableColumn fx:id="auditUserColumn" text="Пользователь"/>
+                        <TableColumn fx:id="auditEntityColumn" text="Сущность"/>
+                        <TableColumn fx:id="auditOperationColumn" text="Операция"/>
+                        <TableColumn fx:id="auditDetailsColumn" text="Детали"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

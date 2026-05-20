@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.lawyercompany.controller.ClientDashboardController">
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="app-header">
+        <Label text="Клиентская панель" styleClass="app-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Выйти" onAction="#handleLogout" styleClass="secondary-button"/>
+    </HBox>
+
+    <TabPane fx:id="dashboardTabPane" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Адвокаты">
+            <ScrollPane fitToWidth="true">
+                <TilePane fx:id="lawyersTilePane"
+                          styleClass="lawyers-tilepane"
+                          hgap="22" vgap="22"
+                          alignment="TOP_LEFT"
+                          prefColumns="4"
+                          prefTileWidth="220"
+                          prefTileHeight="260"/>
+            </ScrollPane>
+        </Tab>
+        <Tab text="Мои дела">
+            <VBox spacing="10">
+                <TextField fx:id="caseSearchField" promptText="Поиск: номер дела, название, статус, адвокат…"/>
+                <TableView fx:id="casesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="caseNumberColumn" text="Номер дела"/>
+                        <TableColumn fx:id="caseTitleColumn" text="Название"/>
+                        <TableColumn fx:id="caseStatusColumn" text="Статус"/>
+                        <TableColumn fx:id="caseLawyerColumn" text="Адвокат"/>
+                        <TableColumn fx:id="caseCreatedAtColumn" text="Дата создания"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="Личный кабинет">
+            <ScrollPane fitToWidth="true">
+                <VBox spacing="12" styleClass="profile-form">
+                    <Label text="Учётная запись" styleClass="profile-section-title"/>
+                    <GridPane hgap="10" vgap="8">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="140" prefWidth="160" hgrow="NEVER"/>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="220"/>
+                        </columnConstraints>
+                        <Label text="Логин:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="profileUsernameField" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="ФИО:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="profileFullNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="profileEmailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <Label text="Контакты" styleClass="profile-section-title"/>
+                    <GridPane hgap="10" vgap="8">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="140" prefWidth="160" hgrow="NEVER"/>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="220"/>
+                        </columnConstraints>
+                        <Label text="Телефон:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="profilePhoneField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="Адрес:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="profileAddressField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <Label text="Смена пароля" styleClass="profile-section-title"/>
+                    <GridPane hgap="10" vgap="8">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="140" prefWidth="160" hgrow="NEVER"/>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="220"/>
+                        </columnConstraints>
+                        <Label text="Текущий пароль:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <PasswordField fx:id="profileCurrentPasswordField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="Новый пароль:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <PasswordField fx:id="profileNewPasswordField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="Повтор:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <PasswordField fx:id="profileConfirmPasswordField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <Button text="Сохранить" onAction="#handleSaveProfile" styleClass="primary-button"/>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+        <Tab text="Уведомления">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Обновить" onAction="#handleRefreshNotifications" styleClass="secondary-button"/>
+                </HBox>
+                <TableView fx:id="notificationsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="notifTypeColumn" text="Тип" prefWidth="120"/>
+                        <TableColumn fx:id="notifDateColumn" text="Дата" prefWidth="160"/>
+                        <TableColumn fx:id="notifMessageColumn" text="Сообщение" prefWidth="280"/>
+                        <TableColumn fx:id="notifCaseColumn" text="Дело" prefWidth="220"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

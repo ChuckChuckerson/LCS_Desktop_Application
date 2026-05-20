@@ -1,0 +1,434 @@
+/* ========== 1. Базовые настройки приложения ========== */
+
+.root {
+    -fx-background-color: #F4F6F9;
+    -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #2C3E50;
+}
+
+/* ========== 1.1 Шапка экранов (юридическая тема) ========== */
+.app-header {
+    -fx-padding: 14 18 14 18;
+    -fx-background-color: linear-gradient(to right, #1F2F55, #2C3E66);
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.14), 10, 0.35, 0, 2);
+}
+
+.app-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Контейнер для экранов авторизации */
+.auth-container {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-padding: 22;
+    -fx-border-color: #E1E5EB;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 14, 0.35, 0, 5);
+}
+
+/* Компактный вид для вторичных экранов/диалогов (регистрация, создание дела) */
+.form-container {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-padding: 22;
+    -fx-border-color: #E1E5EB;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0.3, 0, 4);
+}
+
+.muted-label {
+    -fx-text-fill: #7A8699;
+}
+
+/* Статус/успех */
+.success-label {
+    -fx-text-fill: #2C3E66;
+    -fx-font-weight: 700;
+    -fx-padding: 5 0 0 0;
+}
+
+/* Общий стиль для контейнеров */
+VBox, HBox, GridPane, TilePane {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+/* Заголовки (если будут назначены через styleClass) */
+.heading-1 {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E2A3A;
+}
+
+.heading-2 {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E2A3A;
+}
+
+.label-strong {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+/* Обычный текст */
+Label {
+    -fx-text-fill: #2C3E50;
+}
+
+/* Текст ошибок */
+.error-label {
+    -fx-text-fill: #D9534F;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0 0 0;
+}
+
+/* ========== Toast уведомления ========== */
+.toast {
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.22), 18, 0.25, 0, 6);
+    -fx-border-radius: 12;
+    -fx-border-color: rgba(255,255,255,0.18);
+}
+
+.toast-label {
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+}
+
+.toast-info {
+    -fx-background-color: rgba(31, 47, 85, 0.95);
+}
+
+.toast-success {
+    -fx-background-color: rgba(46, 125, 50, 0.95);
+}
+
+.toast-error {
+    -fx-background-color: rgba(217, 83, 79, 0.95);
+}
+
+
+/* ========== 2. Кнопки ========== */
+
+.button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #2C3E50;
+    -fx-border-color: #2C3E66;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6 14 6 14;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600; /* полужирный */
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 4, 0.2, 0, 1);
+    -fx-background-insets: 0;
+}
+
+.button:hover {
+    -fx-background-color: #C5A028;
+    -fx-text-fill: #1E2A3A;
+    -fx-border-color: #C5A028;
+}
+
+.button:pressed {
+    -fx-background-color: #B29123;
+    -fx-text-fill: #1E2A3A;
+}
+
+.secondary-button {
+    -fx-background-color: rgba(255,255,255,0.92);
+    -fx-text-fill: #1E2A3A;
+    -fx-border-color: rgba(255,255,255,0.75);
+}
+
+.secondary-button:hover {
+    -fx-background-color: rgba(255,255,255,1);
+    -fx-border-color: #C5A028;
+    -fx-text-fill: #1E2A3A;
+}
+
+/* Главная (акцентная) кнопка – можно назначать styleClass="primary-button" */
+.primary-button {
+    -fx-background-color: #C5A028;
+    -fx-text-fill: #1E2A3A;
+    -fx-border-color: #C5A028;
+}
+
+.primary-button:hover {
+    -fx-background-color: #D4B239;
+    -fx-border-color: #D4B239;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #B29123;
+}
+
+
+/* ========== 3. Поля ввода ========== */
+
+.text-field,
+.password-field,
+.text-area {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E1E5EB;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-padding: 4 8 4 8;
+}
+
+.text-area {
+    -fx-padding: 6 8 6 8;
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused {
+    -fx-border-color: #C5A028;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0.3, 0, 1);
+}
+
+
+/* ========== 4. Таблицы (TableView) ========== */
+
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E1E5EB;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-table-cell-border-color: #E1E5EB;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #2C3E66;
+    -fx-background-radius: 4 4 0 0;
+}
+
+.table-view .column-header,
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Чередование строк */
+.table-row-cell:filled:odd {
+    -fx-background-color: #FFFFFF;
+}
+
+.table-row-cell:filled:even {
+    -fx-background-color: #F4F6F9;
+}
+
+/* Выделенная строка */
+.table-row-cell:selected {
+    -fx-background-color: #E6D5A8;
+}
+
+/* Цвет для selection bar (выделение) */
+.table-view:focused .table-row-cell:filled:selected {
+    -fx-background-color: #E6D5A8;
+}
+
+.table-view {
+    -fx-selection-bar: #E6D5A8;
+}
+
+/* Таблица документов в окне дела: кнопки в колонках */
+.documents-table .table-column.table-action-column .table-cell {
+    -fx-alignment: CENTER;
+}
+
+.table-row-button {
+    -fx-padding: 4 10 4 10;
+    -fx-font-size: 12px;
+}
+
+.danger-table-button {
+    -fx-text-fill: #A94442;
+    -fx-border-color: #D9534F;
+}
+
+.danger-table-button:hover {
+    -fx-background-color: #F2DEDE;
+    -fx-text-fill: #843534;
+}
+
+
+/* ========== 5. Вкладки (TabPane) ========== */
+
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: #E9ECF2;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-label {
+    -fx-text-fill: #2C3E66;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #C5A028 transparent;
+    -fx-border-width: 0 0 3 0;
+}
+
+
+/* ========== 6. Карточки адвокатов ========== */
+
+.lawyers-tilepane {
+    -fx-padding: 16;
+}
+
+/* Контейнер карточки – назначать styleClass="lawyer-card" на VBox/HBox */
+.lawyer-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 12;
+    -fx-spacing: 8;
+    -fx-border-color: #E1E5EB;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 8, 0.3, 0, 2);
+}
+
+.lawyer-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.16), 10, 0.35, 0, 3);
+}
+
+.lawyer-avatar {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #C5A028;
+    -fx-border-width: 2;
+}
+
+.lawyer-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E2A3A;
+}
+
+.lawyer-meta {
+    -fx-text-fill: #7A8699;
+    -fx-font-size: 12px;
+}
+
+.lawyer-contact-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #2C3E66;
+    -fx-border-color: #C5A028;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-font-weight: 600;
+}
+
+.lawyer-contact-button:hover {
+    -fx-background-color: #C5A028;
+    -fx-text-fill: #1E2A3A;
+}
+
+/* Личный кабинет (светлый фон — не использовать app-title) */
+.profile-form {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 12;
+}
+
+.profile-form Label {
+    -fx-text-fill: #000000;
+}
+
+.profile-section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.profile-form .text-field,
+.profile-form .password-field {
+    -fx-text-fill: #000000;
+    -fx-prompt-text-fill: #6B7280;
+}
+
+
+/* ========== 7. Диалоги и модальные окна ========== */
+
+.dialog-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 12, 0.4, 0, 4);
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 10 0;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #1E2A3A;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+
+/* ========== 8. Прочие элементы ========== */
+
+/* TitledPane в окне дела */
+.titled-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E1E5EB;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #E9ECF2;
+    -fx-background-radius: 4 4 0 0;
+}
+
+.titled-pane > .title .text {
+    -fx-fill: #2C3E66;
+    -fx-font-weight: bold;
+}
+
+.list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E1E5EB;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.list-cell:selected {
+    -fx-background-color: #E6D5A8;
+}
+
